@@ -454,10 +454,26 @@ textarea{
 <input type="text" name="children" placeholder="Ex : 1 enfant de 6 ans, 1 enfant de 12 ans">
 </div>
 
+<div class="field">
+  <label class="title">Quel type de voyage préparez-vous ?</label>
+
+  <select name="travelType">
+    <option value="">Choisissez votre type de voyage</option>
+    <option value="couple">Voyage en couple</option>
+    <option value="famille">Voyage en famille</option>
+    <option value="amis">Voyage entre amis</option>
+    <option value="solo">Voyage solo</option>
+    <option value="groupe">Voyage en groupe</option>
+    <option value="evjf">EVJF</option>
+    <option value="evg">EVG</option>
+    <option value="noces">Voyage de noces</option>
+    <option value="autre">Autre</option>
+  </select>
+</div>
+  
 <div class="info-box">
-Les tarifs des formules comprennent jusqu'à <strong>4 voyageurs</strong>.
-À partir du 5ᵉ voyageur, un supplément de
-<strong>10 € par personne supplémentaire</strong> est appliqué.
+  Les tarifs Essentiel, Évasion et Signature comprennent jusqu'à <strong>4 voyageurs</strong>.<br>
+  Pour les groupes de <strong>5 personnes ou plus</strong>, les EVJF/EVG et les voyages de noces, nous vous proposerons une <strong>formule sur mesure</strong>.
 </div>
 
 <div class="buttons">
@@ -490,6 +506,16 @@ Cela nous permet de sélectionner des propositions réalistes et adaptées.
 <option>5 000 € à 8 000 €</option>
 <option>Plus de 8 000 €</option>
 </select>
+  <div class="field">
+  <label class="title">Ce budget est-il prévu :</label>
+
+  <select name="budgetType">
+    <option value="">Précisez votre budget</option>
+    <option value="total">Pour l'ensemble du voyage</option>
+    <option value="personne">Par personne</option>
+  </select>
+</div>
+
 </div>
 
 <div class="info-box">
@@ -527,8 +553,9 @@ Sélectionnez toutes les expériences qui vous ressemblent.
 <div class="choice"><input type="checkbox" id="c6"><label for="c6">🥾 Aventure</label></div>
 <div class="choice"><input type="checkbox" id="c7"><label for="c7">🛍 Shopping</label></div>
 <div class="choice"><input type="checkbox" id="c8"><label for="c8">🌙 Sorties & vie nocturne</label></div>
-
-</div>
+<div class="choice"><input type="checkbox" id="c9"><label for="c9">🧖 Bien-être & spa</label></div>
+<div class="choice"><input type="checkbox" id="c10"><label for="c10">🎢 Parcs & activités familiales</label></div>
+<div class="choice"><input type="checkbox" id="c11"><label for="c11">✨ Expériences locales & insolites</label></div></div>
 
 <div class="buttons">
 <button type="button" class="btn previous" onclick="previousStep()">← Retour</button>
@@ -776,14 +803,33 @@ function changeBooks(amount){
   calculatePrice();
 }
 
-function calculatePrice(){
+  function calculatePrice(){
 
   const days = parseInt(document.getElementById("days").value) || 2;
+  const travelType = document.querySelector('[name="travelType"]')?.value || "";
+  const occasion = document.querySelector('[name="occasion"]')?.value || "";
 
-  let basePrice;
-  let formula;
+  let basePrice = 0;
+  let formula = "";
+  let surMesure = false;
 
-  if(days <= 4){
+  // Cas nécessitant une formule sur mesure
+  if(
+    travellers >= 6 ||
+    travelType === "evjf" ||
+    travelType === "evg" ||
+    travelType === "noces" ||
+    occasion === "EVJF" ||
+    occasion === "EVG" ||
+    occasion === "Voyage de noces" ||
+    days > 18
+  ){
+    surMesure = true;
+    formula = "Sur mesure";
+  }
+
+  // Formules classiques jusqu'à 5 voyageurs
+  else if(days <= 4){
     basePrice = 80;
     formula = "Essentiel";
   }
@@ -791,42 +837,50 @@ function calculatePrice(){
     basePrice = 145;
     formula = "Évasion";
   }
-  else if(days <= 18){
+  else{
     basePrice = 190;
     formula = "Signature";
   }
-  else{
-    basePrice = 190;
-    formula = "Sur mesure";
-  }
+    const extraPersonPrice = travellers === 5 ? 10 : 0;
+    const bookPrice = books * 30;
 
-  const extraTravellers = Math.max(0, travellers - 4);
-  const travellerPrice = extraTravellers * 10;
-  const bookPrice = books * 30;
+  if(surMesure){
 
-  const total = basePrice + travellerPrice + bookPrice;
+    document.getElementById("totalPrice").textContent = "Sur devis";
 
-  document.getElementById("totalPrice").textContent = total + " €";
+    let details = "Formule Sur mesure";
 
-  let details = formula + " : " + basePrice + " €";
+    if(books > 0){
+      details += "<br>" +
+        books +
+        " carnet(s) papier : +" +
+        bookPrice + " €";
+    }
 
-  if(extraTravellers > 0){
-    details += "<br>" +
-      extraTravellers +
-      " voyageur(s) supplémentaire(s) : +" +
-      travellerPrice + " €";
-  }
+    document.getElementById("priceDetails").innerHTML = details;
 
-  if(books > 0){
-    details += "<br>" +
-      books +
-      " carnet(s) papier : +" +
-      bookPrice + " €";
-  }
+  } else {
 
-  document.getElementById("priceDetails").innerHTML = details;
+    const total = basePrice + extraPersonPrice + bookPrice;
+
+    document.getElementById("totalPrice").textContent = total + " €";
+
+    let details = formula + " : " + basePrice + " €";
+    
+if(extraPersonPrice > 0){
+  details += "<br>Ajout d'une personne : +10 €";
 }
+    if(books > 0){
+      details += "<br>" +
+        books +
+        " carnet(s) papier : +" +
+        bookPrice + " €";
+    }
 
+    document.getElementById("priceDetails").innerHTML = details;
+  }
+}
+  
 document.getElementById("travelForm").addEventListener("submit", function(e){
 
   e.preventDefault();
