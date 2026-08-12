@@ -272,6 +272,126 @@
       }
     }
 
+    /* COMMENT ÇA MARCHE */
+
+.how-it-works {
+  background: #f8f5ee;
+  color: #243b3b;
+  padding: 100px 7%;
+  text-align: center;
+}
+
+.section-heading {
+  max-width: 700px;
+  margin: 0 auto 70px;
+}
+
+.section-small {
+  color: #c99535;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.section-heading h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.section-heading p {
+  color: #687777;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-top: 18px;
+}
+
+.steps {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+.step {
+  position: relative;
+  padding: 20px 25px;
+}
+
+.step-number {
+  font-family: "Playfair Display", serif;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 95px;
+  color: rgba(201,149,53,0.09);
+  z-index: 0;
+}
+
+.step-icon {
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 25px;
+  border: 1px solid #d9c28f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c99535;
+  font-size: 28px;
+}
+
+.step h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.step p {
+  color: #687777;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+.discover-button {
+  display: inline-block;
+  margin-top: 65px;
+  padding: 16px 25px;
+  border: 1px solid #c99535;
+  border-radius: 9px;
+  color: #8c6724;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.discover-button:hover {
+  background: #c99535;
+  color: white;
+}
+
+@media (max-width: 850px) {
+
+  .how-it-works {
+    padding: 75px 7%;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 65px;
+  }
+
+  .section-heading {
+    margin-bottom: 65px;
+  }
+
+}
   </style>
 </head>
 
@@ -333,6 +453,63 @@
     </main>
 
   </section>
+  
+<section class="how-it-works">
+
+  <div class="section-heading">
+    <span class="section-small">VOTRE VOYAGE COMMENCE ICI</span>
+    <h2>Comment ça marche ?</h2>
+    <p>
+      Quelques étapes simples pour imaginer un voyage
+      qui vous ressemble vraiment.
+    </p>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-number">01</div>
+      <div class="step-icon">♡</div>
+
+      <h3>Parlez-nous de vos envies</h3>
+
+      <p>
+        Répondez à quelques questions sur vos goûts,
+        votre budget et votre façon de voyager.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">02</div>
+      <div class="step-icon">✈</div>
+
+      <h3>Nous imaginons votre voyage</h3>
+
+      <p>
+        Nous créons une proposition personnalisée,
+        pensée spécialement selon vos envies.
+      </p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">03</div>
+      <div class="step-icon">☀</div>
+
+      <h3>Partez l'esprit léger</h3>
+
+      <p>
+        Retrouvez votre itinéraire, vos bonnes adresses
+        et toutes les informations utiles pour votre séjour.
+      </p>
+    </div>
+
+  </div>
+
+  <a href="creer-mon-voyage.html" class="discover-button">
+    Commencer mon voyage →
+  </a>
+
+</section>
 
 </body>
 </html>
