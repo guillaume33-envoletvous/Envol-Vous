@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nos formules | Envol & Vous</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Pacifico&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #f8f5ee;
+      color: #243b3b;
+    }
+
+    /* EN-TÊTE */
+
+    header {
+      background: #174f52;
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .stamp {
+      width: 65px;
+      height: 65px;
+      border: 2px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transform: rotate(-7deg);
+    }
+
+    .stamp::before {
+      content: "ENVOL & VOUS";
+      position: absolute;
+      top: 7px;
+      font-size: 7px;
+      letter-spacing: 1px;
+    }
+
+    .stamp::after {
+      content: "VOYAGE";
+      position: absolute;
+      bottom: 7px;
+      font-size: 7px;
+      letter-spacing: 1.5px;
+    }
+
+    .stamp-icon {
+      font-size: 24px;
+      transform: rotate(7deg);
+    }
+
+    .brand-name {
+      font-family: "Pacifico", cursive;
+      font-size: 32px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav .active {
+      color: #f5bd4b;
+    }
+
+    nav .nav-button {
+      border: 1px solid #f5bd4b;
+      padding: 12px 18px;
+      border-radius: 9px;
+    }
+
+    /* INTRODUCTION */
+
+    .intro {
+      text-align: center;
+      padding: 85px 6% 50px;
+    }
+
+    .small-title {
+      color: #c99535;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+    }
+
+    .intro h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(45px, 6vw, 72px);
+      font-weight: 500;
+      margin-top: 12px;
+    }
+
+    .intro p {
+      max-width: 700px;
+      margin: 20px auto 0;
+      color: #687777;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* FORMULES */
+
+    .pricing {
+      max-width: 1250px;
+      margin: auto;
+      padding: 20px 5% 100px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      background: white;
+      border-radius: 18px;
+      padding: 38px 30px;
+      box-shadow: 0 12px 35px rgba(30,60,60,0.08);
+      border: 1px solid #ece7dc;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border: 2px solid #c99535;
+      transform: translateY(-10px);
+    }
+
+    .popular {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #c99535;
+      color: white;
+      padding: 7px 16px;
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .formula-icon {
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    .price-card h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    .duration {
+      color: #c99535;
+      font-weight: 600;
+      margin-top: 7px;
+    }
+
+    .price {
+      font-family: "Playfair Display", serif;
+      font-size: 55px;
+      margin-top: 25px;
+      color: #174f52;
+    }
+
+    .price-note {
+      color: #788585;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: #ece7dc;
+      margin: 28px 0;
+    }
+
+    .features {
+      list-style: none;
+      flex: 1;
+    }
+
+    .features li {
+      margin-bottom: 15px;
+      line-height: 1.5;
+      color: #536565;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: #c99535;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+
+    .choose-button {
+      display: block;
+      text-align: center;
+      margin-top: 28px;
+      padding: 15px 18px;
+      background: #174f52;
+      color: white;
+      text-decoration: none;
+      border-radius: 9px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .choose-button:hover {
+      background: #c99535;
+    }
+
+    /* SUR MESURE */
+
+    .custom {
+      max-width: 1150px;
+      margin: 10px auto 100px;
+      background: #174f52;
+      color: white;
+      border-radius: 22px;
+      padding: 55px 6%;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .custom-label {
+      color: #f5bd4b;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+    }
+
+    .custom h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(35px, 4vw, 52px);
+      font-weight: 500;
+      margin: 10px 0 18px;
+    }
+
+    .custom p {
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+    }
+
+    .custom-options {
+      margin-top: 25px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .custom-option {
+      background: rgba(255,255,255,0.08);
+      padding: 14px 17px;
+      border-radius: 9px;
+    }
+
+    .quote {
+      text-align: center;
+    }
+
+    .quote-price {
+      font-family: "Playfair Display", serif;
+      font-size: 38px;
+      color: #f5bd4b;
+      margin-bottom: 18px;
+    }
+
+    .quote-button {
+      display: inline-block;
+      padding: 16px 25px;
+      background: #f5bd4b;
+      color: #243b3b;
+      text-decoration: none;
+      border-radius: 9px;
+      font-weight: 600;
+    }
+
+    /* NOTE */
+
+    .pricing-info {
+      max-width: 850px;
+      margin: -50px auto 90px;
+      padding: 0 5%;
+      text-align: center;
+      color: #788585;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* MOBILE */
+
+    .menu-mobile {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 29px;
+    }
+
+    @media (max-width: 850px) {
+
+      header {
+        padding: 16px 5%;
+      }
+
+      .brand-name {
+        font-size: 25px;
+      }
+
+      .stamp {
+        width: 52px;
+        height: 52px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .menu-mobile {
+        display: block;
+      }
+
+      .intro {
+        padding-top: 65px;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .price-card.featured {
+        transform: none;
+        margin-top: 10px;
+      }
+
+      .custom {
+        margin-left: 5%;
+        margin-right: 5%;
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <a href="index.html" class="brand">
+
+    <div class="stamp">
+      <span class="stamp-icon">✈</span>
+    </div>
+
+    <span class="brand-name">Envol & Vous</span>
+
+  </a>
+
+  <nav>
+    <a href="a-propos.html">À propos</a>
+    <a href="destinations.html">Destination</a>
+    <a href="formules.html" class="active">Nos formules</a>
+    <a href="creer-mon-voyage.html" class="nav-button">Créer mon voyage</a>
+  </nav>
+
+  <button class="menu-mobile">☰</button>
+
+</header>
+
+
+<section class="intro">
+
+  <span class="small-title">À CHACUN SON VOYAGE</span>
+
+  <h1>Nos formules</h1>
+
+  <p>
+    Que vous partiez quelques jours ou plusieurs semaines,
+    choisissez la formule adaptée à la durée de votre séjour.
+    Nous imaginons ensuite un voyage qui vous ressemble.
+  </p>
+
+</section>
+
+
+<section class="pricing">
+
+  <div class="pricing-grid">
+
+    <!-- ESSENTIEL -->
+
+    <div class="price-card">
+
+      <div class="formula-icon">🌿</div>
+
+      <h2>Essentiel</h2>
+
+      <div class="duration">2 à 4 jours</div>
+
+      <div class="price">80 €</div>
+
+      <div class="price-note">
+        Tarif par voyage<br>
+        Jusqu'à 4 voyageurs
+      </div>
+
+      <div class="divider"></div>
+
+      <ul class="features">
+        <li>Voyage personnalisé selon vos envies</li>
+        <li>Itinéraire adapté à la durée du séjour</li>
+        <li>Sélection d'activités et de visites</li>
+        <li>Bonnes adresses et recommandations</li>
+        <li>Organisation claire de votre séjour</li>
+      </ul>
+
+      <a href="creer-mon-voyage.html?formule=essentiel" class="choose-button">
+        Choisir cette formule
+      </a>
+
+    </div>
+
+
+    <!-- ÉVASION -->
+
+    <div class="price-card featured">
+
+      <div class="popular">LA PLUS CHOISIE</div>
+
+      <div class="formula-icon">✈️</div>
+
+      <h2>Évasion</h2>
+
+      <div class="duration">5 à 9 jours</div>
+
+      <div class="price">145 €</div>
+
+      <div class="price-note">
+        Tarif par voyage<br>
+        Jusqu'à 4 voyageurs
+      </div>
+
+      <div class="divider"></div>
+
+      <ul class="features">
+        <li>Voyage entièrement personnalisé</li>
+        <li>Itinéraire détaillé jour par jour</li>
+        <li>Activités et visites sélectionnées</li>
+        <li>Bonnes adresses adaptées à vos envies</li>
+        <li>Conseils pratiques pour votre destination</li>
+        <li>Carnet de voyage personnalisé</li>
+      </ul>
+
+      <a href="creer-mon-voyage.html?formule=evasion" class="choose-button">
+        Choisir cette formule
+      </a>
+
+    </div>
+
+
+    <!-- SIGNATURE -->
+
+    <div class="price-card">
+
+      <div class="formula-icon">✨</div>
+
+      <h2>Signature</h2>
+
+      <div class="duration">10 à 18 jours</div>
+
+      <div class="price">190 €</div>
+
+      <div class="price-note">
+        Tarif par voyage<br>
+        Jusqu'à 4 voyageurs
+      </div>
+
+      <div class="divider"></div>
+
+      <ul class="features">
+        <li>Voyage longue durée entièrement personnalisé</li>
+        <li>Itinéraire détaillé jour par jour</li>
+        <li>Plusieurs étapes ou régions possibles</li>
+        <li>Activités, visites et bonnes adresses</li>
+        <li>Conseils pratiques et organisation du séjour</li>
+        <li>Carnet de voyage complet et personnalisé</li>
+      </ul>
+
+      <a href="creer-mon-voyage.html?formule=signature" class="choose-button">
+        Choisir cette formule
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FORMULE SUR MESURE -->
+
+<section class="custom">
+
+  <div>
+
+    <span class="custom-label">POUR LES PROJETS UNIQUES</span>
+
+    <h2>Formule Sur mesure</h2>
+
+    <p>
+      Certains voyages méritent une organisation particulière.
+      Nous préparons alors une proposition adaptée à votre groupe,
+      à l'occasion et à vos envies.
+    </p>
+
+    <div class="custom-options">
+
+      <div class="custom-option">
+        👥 Groupes de 5 personnes et plus
+      </div>
+
+      <div class="custom-option">
+        🎉 EVJF & EVG
+      </div>
+
+      <div class="custom-option">
+        💍 Voyage de noces pour 2 personnes
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="quote">
+
+    <div class="quote-price">Sur devis</div>
+
+    <a href="creer-mon-voyage.html?formule=sur-mesure" class="quote-button">
+      Demander un devis
+    </a>
+
+  </div>
+
+</section>
+
+
+<div class="pricing-info">
+
+  Les tarifs Essentiel, Évasion et Signature correspondent à la création
+  d'un voyage pour un maximum de 4 voyageurs. Les transports,
+  hébergements, activités et autres prestations réservées auprès de
+  prestataires ne sont pas inclus dans le prix de la formule.
+
+</div>
+
+
+</body>
+</html>
