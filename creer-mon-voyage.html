@@ -496,23 +496,20 @@ Cela nous permet de sélectionner des propositions réalistes et adaptées.
 </p>
 
 <div class="field">
-<label class="title">Budget total prévu pour le voyage</label>
-<select name="budget">
-<option value="">Choisissez une tranche</option>
-<option>Moins de 1 000 €</option>
-<option>1 000 € à 2 000 €</option>
-<option>2 000 € à 3 500 €</option>
-<option>3 500 € à 5 000 €</option>
-<option>5 000 € à 8 000 €</option>
-<option>Plus de 8 000 €</option>
-</select>
-  <div class="field">
   <label class="title">Ce budget est-il prévu :</label>
 
-  <select name="budgetType">
+  <select name="budgetType" id="budgetType" onchange="updateBudgetOptions()">
     <option value="">Précisez votre budget</option>
     <option value="total">Pour l'ensemble du voyage</option>
     <option value="personne">Par personne</option>
+  </select>
+</div>
+
+<div class="field">
+  <label class="title" id="budgetLabel">Budget prévu pour le voyage</label>
+
+  <select name="budget" id="budget">
+    <option value="">Choisissez d'abord le type de budget</option>
   </select>
 </div>
 
@@ -890,8 +887,52 @@ document.getElementById("travelForm").addEventListener("submit", function(e){
   );
 
 });
+function updateBudgetOptions(){
 
-calculatePrice();
+  const budgetType = document.getElementById("budgetType").value;
+  const budget = document.getElementById("budget");
+  const label = document.getElementById("budgetLabel");
+
+  budget.innerHTML = "";
+
+  if(budgetType === "total"){
+
+    label.textContent = "Budget total prévu pour le voyage";
+
+    budget.innerHTML = `
+      <option value="">Choisissez une tranche</option>
+      <option>Moins de 1 000 €</option>
+      <option>1 000 € à 2 000 €</option>
+      <option>2 000 € à 3 500 €</option>
+      <option>3 500 € à 5 000 €</option>
+      <option>5 000 € à 8 000 €</option>
+      <option>Plus de 8 000 €</option>
+    `;
+
+  } else if(budgetType === "personne"){
+
+    label.textContent = "Budget prévu par personne";
+
+    budget.innerHTML = `
+      <option value="">Choisissez une tranche</option>
+      <option>Moins de 500 €</option>
+      <option>500 € à 1 000 €</option>
+      <option>1 000 € à 1 500 €</option>
+      <option>1 500 € à 2 500 €</option>
+      <option>2 500 € à 4 000 €</option>
+      <option>Plus de 4 000 €</option>
+    `;
+
+  } else {
+
+    label.textContent = "Budget prévu pour le voyage";
+
+    budget.innerHTML = `
+      <option value="">Choisissez d'abord le type de budget</option>
+    `;
+  }
+}
+  calculatePrice();
 
 </script>
 
