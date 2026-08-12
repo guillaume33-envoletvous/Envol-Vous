@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Destinations | Envol & Vous</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Pacifico&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: #f8f5ee;
+  color: #243b3b;
+}
+
+/* HEADER */
+
+header {
+  background: #174f52;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: white;
+}
+
+.stamp {
+  width: 65px;
+  height: 65px;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform: rotate(-7deg);
+}
+
+.stamp::before {
+  content: "ENVOL & VOUS";
+  position: absolute;
+  top: 7px;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.stamp::after {
+  content: "VOYAGE";
+  position: absolute;
+  bottom: 7px;
+  font-size: 7px;
+  letter-spacing: 1.5px;
+}
+
+.stamp-icon {
+  font-size: 24px;
+  transform: rotate(7deg);
+}
+
+.brand-name {
+  font-family: "Pacifico", cursive;
+  font-size: 32px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav .active {
+  color: #f5bd4b;
+}
+
+nav .nav-button {
+  border: 1px solid #f5bd4b;
+  padding: 12px 18px;
+  border-radius: 9px;
+}
+
+/* INTRO */
+
+.intro {
+  text-align: center;
+  padding: 80px 6% 55px;
+}
+
+.small-title {
+  color: #c99535;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.intro h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(45px, 6vw, 72px);
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.intro p {
+  max-width: 720px;
+  margin: 20px auto 0;
+  color: #687777;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* DESTINATIONS */
+
+.destinations {
+  max-width: 1250px;
+  margin: auto;
+  padding: 10px 5% 70px;
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.destination-card {
+  height: 470px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 12px 30px rgba(20,50,50,0.12);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.destination-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 40px rgba(20,50,50,0.20);
+}
+
+.destination-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(9,31,32,.88) 0%,
+    rgba(9,31,32,.25) 52%,
+    rgba(9,31,32,.02) 80%
+  );
+}
+
+.destination-content {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  padding: 30px;
+  color: white;
+}
+
+.destination-type {
+  color: #f5bd4b;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.destination-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.destination-content p {
+  line-height: 1.5;
+  color: rgba(255,255,255,.92);
+  font-size: 14px;
+}
+
+/* PHOTOS */
+
+.japon {
+  background-image: url("japon.png");
+}
+
+.tanzanie {
+  background-image: url("tanzanie.png");
+}
+
+.polynesie {
+  background-image: url("polynesie.png");
+}
+
+.egypte {
+  background-image: url("egypte.png");
+}
+
+.thailande {
+  background-image: url("thailande.png");
+}
+
+.usa {
+  background-image: url("usa.png");
+}
+
+.grece {
+  background-image: url("grece.png");
+}
+
+.france {
+  background-image: url("france.png");
+}
+
+.stemilion {
+  background-image: url("stemilion.png");
+}
+
+/* ET BIEN PLUS ENCORE */
+
+.more {
+  max-width: 1125px;
+  margin: 0 auto 100px;
+  padding: 0 5%;
+}
+
+.more-box {
+  min-height: 330px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18,69,71,.97) 0%,
+      rgba(18,69,71,.88) 50%,
+      rgba(18,69,71,.72) 100%
+    );
+  display: flex;
+  align-items: center;
+  padding: 60px;
+  box-shadow: 0 15px 40px rgba(20,50,50,.12);
+}
+
+.more-content {
+  max-width: 720px;
+  color: white;
+}
+
+.more-small {
+  color: #f5bd4b;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.more h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(42px, 5vw, 65px);
+  font-weight: 500;
+  margin: 10px 0 18px;
+}
+
+.more p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.88);
+  max-width: 650px;
+}
+
+.more-button {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 15px 23px;
+  background: #f5bd4b;
+  color: #243b3b;
+  text-decoration: none;
+  border-radius: 9px;
+  font-weight: 600;
+  transition: .2s;
+}
+
+.more-button:hover {
+  transform: translateY(-2px);
+  background: white;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  nav {
+    gap: 15px;
+    font-size: 13px;
+  }
+
+  .destination-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 650px) {
+
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .brand-name {
+    font-size: 26px;
+  }
+
+  .destination-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .destination-card {
+    height: 430px;
+  }
+
+  .more-box {
+    padding: 40px 28px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="brand">
+
+  <div class="stamp">
+    <span class="stamp-icon">✈</span>
+  </div>
+
+  <span class="brand-name">Envol & Vous</span>
+
+</a>
+
+<nav>
+  <a href="a-propos.html">À propos</a>
+  <a href="destinations.html" class="active">Destination</a>
+  <a href="formules.html">Nos formules</a>
+  <a href="creer-mon-voyage.html" class="nav-button">Créer mon voyage</a>
+</nav>
+
+</header>
+
+
+<section class="intro">
+
+<span class="small-title">LE MONDE VOUS ATTEND</span>
+
+<h1>Où souhaitez-vous partir ?</h1>
+
+<p>
+Des plages paradisiaques aux grands espaces, des voyages culturels
+aux road trips, découvrez quelques inspirations pour votre prochain voyage.
+</p>
+
+</section>
+
+
+<section class="destinations">
+
+<div class="destination-grid">
+
+
+<!-- JAPON -->
+
+<div class="destination-card japon">
+  <div class="destination-content">
+    <span class="destination-type">Culture & traditions</span>
+    <h2>Japon</h2>
+    <p>Temples, traditions, gastronomie et paysages fascinants.</p>
+  </div>
+</div>
+
+
+<!-- TANZANIE -->
+
+<div class="destination-card tanzanie">
+  <div class="destination-content">
+    <span class="destination-type">Safari & aventure</span>
+    <h2>Tanzanie</h2>
+    <p>Grands espaces, faune sauvage et terres africaines.</p>
+  </div>
+</div>
+
+
+<!-- POLYNÉSIE -->
+
+<div class="destination-card polynesie">
+  <div class="destination-content">
+    <span class="destination-type">Lagons & évasion</span>
+    <h2>Polynésie française</h2>
+    <p>Lagons turquoise, îles sauvages et douceur de vivre.</p>
+  </div>
+</div>
+
+
+<!-- ÉGYPTE -->
+
+<div class="destination-card egypte">
+  <div class="destination-content">
+    <span class="destination-type">Histoire & découverte</span>
+    <h2>Égypte</h2>
+    <p>Pyramides, temples antiques, désert et trésors millénaires.</p>
+  </div>
+</div>
+
+
+<!-- THAÏLANDE -->
+
+<div class="destination-card thailande">
+  <div class="destination-content">
+    <span class="destination-type">Exotisme & découverte</span>
+    <h2>Thaïlande</h2>
+    <p>Temples, plages tropicales, marchés et culture asiatique.</p>
+  </div>
+</div>
+
+
+<!-- ÉTATS-UNIS -->
+
+<div class="destination-card usa">
+  <div class="destination-content">
+    <span class="destination-type">Road trip & grands espaces</span>
+    <h2>États-Unis</h2>
+    <p>Routes mythiques, parcs nationaux et paysages spectaculaires.</p>
+  </div>
+</div>
+
+
+<!-- GRÈCE -->
+
+<div class="destination-card grece">
+  <div class="destination-content">
+    <span class="destination-type">Îles & Méditerranée</span>
+    <h2>Grèce</h2>
+    <p>Villages blancs, mer Égée, criques et patrimoine antique.</p>
+  </div>
+</div>
+
+
+<!-- FRANCE -->
+
+<div class="destination-card france">
+  <div class="destination-content">
+    <span class="destination-type">Sur les routes</span>
+    <h2>Road trip en France</h2>
+    <p>
+      Prenez la route à la découverte des plus beaux paysages
+      et villages de France.
+    </p>
+  </div>
+</div>
+
+
+<!-- SAINT-ÉMILION -->
+
+<div class="destination-card stemilion">
+  <div class="destination-content">
+    <span class="destination-type">Notre région</span>
+    <h2>Gironde & Saint-Émilion</h2>
+    <p>
+      Vignobles, villages de charme, patrimoine et escapades
+      au cœur du Bordelais.
+    </p>
+  </div>
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ET BIEN PLUS ENCORE -->
+
+<section class="more">
+
+<div class="more-box">
+
+  <div class="more-content">
+
+    <span class="more-small">VOTRE VOYAGE, VOS ENVIES</span>
+
+    <h2>Et bien plus encore…</h2>
+
+    <p>
+      Votre destination n'est pas dans cette sélection ?
+      Ce ne sont que quelques idées parmi toutes les possibilités.
+      Envol & Vous imagine votre séjour selon vos envies,
+      en France comme à l'autre bout du monde.
+    </p>
+
+    <a href="creer-mon-voyage.html" class="more-button">
+      Créer mon voyage →
+    </a>
+
+  </div>
+
+</div>
+
+</section>
+
+
+</body>
+</html>
