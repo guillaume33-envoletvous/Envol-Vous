@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>À propos | Envol & Vous</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Pacifico&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"DM Sans",sans-serif;
+  background:#f8f5ee;
+  color:#294445;
+}
+
+header{
+  background:#174f52;
+  padding:20px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  color:white;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border:2px solid white;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:23px;
+}
+
+.brand-name{
+  font-family:"Pacifico",cursive;
+  font-size:30px;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+}
+
+nav .active{
+  color:#f5bd4b;
+}
+
+/* Hero */
+
+.hero{
+  padding:70px 5% 30px;
+  text-align:center;
+}
+
+.eyebrow{
+  color:#c69239;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(40px,5.5vw,60px);
+  font-weight:500;
+  margin:12px 0 18px;
+}
+
+.hero p{
+  color:#6b7979;
+  max-width:640px;
+  margin:auto;
+  line-height:1.8;
+  font-size:17px;
+}
+
+/* Bio */
+
+.bio{
+  max-width:980px;
+  margin:60px auto;
+  padding:0 5%;
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:55px;
+  align-items:center;
+}
+
+.bio-portrait{
+  aspect-ratio:4/5;
+  background:linear-gradient(160deg,#174f52,#2c6f6f);
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#f5bd4b;
+  font-size:64px;
+}
+
+.bio-text h2{
+  font-family:"Playfair Display",serif;
+  font-size:34px;
+  font-weight:500;
+  margin-bottom:20px;
+}
+
+.bio-text p{
+  line-height:1.85;
+  color:#3f5555;
+  margin-bottom:18px;
+}
+
+.bio-text p:last-child{
+  margin-bottom:0;
+}
+
+.stops{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:25px;
+}
+
+.stop{
+  background:white;
+  border:1px solid #e3ddd2;
+  border-radius:30px;
+  padding:8px 16px;
+  font-size:14px;
+  color:#294445;
+}
+
+/* Services intro */
+
+.services-intro{
+  text-align:center;
+  max-width:680px;
+  margin:100px auto 45px;
+  padding:0 20px;
+}
+
+.services-intro span{
+  color:#c69239;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.services-intro h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(32px,4.5vw,44px);
+  font-weight:500;
+  margin:12px 0 14px;
+}
+
+.services-intro p{
+  color:#6b7979;
+  line-height:1.75;
+}
+
+/* Approach */
+
+.approach{
+  max-width:1000px;
+  margin:0 auto 70px;
+  padding:0 5%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.approach-card{
+  background:white;
+  border-radius:16px;
+  padding:32px 26px;
+  box-shadow:0 10px 30px rgba(30,65,65,.06);
+}
+
+.approach-card .num{
+  color:#d5a344;
+  font-family:"Playfair Display",serif;
+  font-size:26px;
+  margin-bottom:14px;
+}
+
+.approach-card h3{
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+.approach-card p{
+  color:#5f6f6f;
+  font-size:14.5px;
+  line-height:1.7;
+}
+
+/* Formules */
+
+.formules{
+  max-width:1000px;
+  margin:0 auto 90px;
+  padding:0 5%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.formule-card{
+  background:white;
+  border:1px solid #e3ddd2;
+  border-radius:18px;
+  padding:34px 28px;
+  display:flex;
+  flex-direction:column;
+}
+
+.formule-card.featured{
+  border-color:#d5a344;
+  box-shadow:0 15px 40px rgba(30,65,65,.09);
+  transform:translateY(-8px);
+}
+
+.formule-name{
+  font-family:"Playfair Display",serif;
+  font-size:24px;
+  margin-bottom:6px;
+}
+
+.formule-tag{
+  color:#c69239;
+  font-size:12.5px;
+  letter-spacing:1px;
+  margin-bottom:18px;
+}
+
+.formule-price{
+  font-family:"Playfair Display",serif;
+  font-size:32px;
+  margin-bottom:16px;
+}
+
+.formule-price span{
+  font-size:14px;
+  font-family:"DM Sans",sans-serif;
+  color:#8a9494;
+  font-weight:400;
+}
+
+.formule-card ul{
+  list-style:none;
+  color:#4a5959;
+  font-size:14.5px;
+  line-height:2;
+  flex-grow:1;
+}
+
+.formule-card li::before{
+  content:"— ";
+  color:#c69239;
+}
+
+.formule-cta{
+  display:inline-block;
+  margin-top:24px;
+  text-align:center;
+  background:#f5bd4b;
+  color:#243b3b;
+  text-decoration:none;
+  padding:13px;
+  border-radius:9px;
+  font-weight:600;
+  font-size:14.5px;
+}
+
+.formule-card.featured .formule-cta{
+  background:#174f52;
+  color:white;
+}
+
+/* CTA final */
+
+.final-cta{
+  background:#174f52;
+  color:white;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.final-cta h2{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(28px,4vw,38px);
+  font-weight:500;
+  margin-bottom:16px;
+}
+
+.final-cta p{
+  color:rgba(255,255,255,.8);
+  max-width:520px;
+  margin:0 auto 30px;
+  line-height:1.7;
+}
+
+.final-cta a{
+  display:inline-block;
+  background:#f5bd4b;
+  color:#243b3b;
+  text-decoration:none;
+  padding:15px 30px;
+  border-radius:9px;
+  font-weight:600;
+}
+
+@media(max-width:800px){
+  header{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  nav{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px;
+    font-size:13px;
+  }
+
+  .bio{
+    grid-template-columns:1fr;
+  }
+
+  .bio-portrait{
+    max-width:280px;
+    margin:0 auto;
+  }
+
+  .approach,
+  .formules{
+    grid-template-columns:1fr;
+  }
+
+  .formule-card.featured{
+    transform:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="brand">
+    <div class="logo">✈</div>
+    <span class="brand-name">Envol & Vous</span>
+  </a>
+
+  <nav>
+    <a href="a-propos.html" class="active">À propos</a>
+    <a href="destinations.html">Destination</a>
+    <a href="formules.html">Nos formules</a>
+    <a href="creer-mon-voyage.html">Créer mon voyage</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">QUI SUIS-JE</span>
+  <h1>Une passion pour l'art d'organiser vos voyages</h1>
+  <p>
+    Envol & Vous, c'est avant tout une histoire de passion : celle de préparer,
+    imaginer et construire des voyages qui ont du sens.
+  </p>
+</section>
+
+<section class="bio">
+
+  <div class="bio-portrait">✈</div>
+
+  <div class="bio-text">
+    <h2>Une passion qui grandit à chaque voyage</h2>
+
+    <p>
+      Ma passion pour le voyage grandit un peu plus chaque jour. Ce qui a commencé
+      comme une envie de découvrir de nouveaux horizons est devenu, avec le temps,
+      une véritable vocation : celle d'aider les autres à vivre, eux aussi, le
+      voyage qui leur ressemble.
+    </p>
+
+    <p>
+      Ce qui m'anime vraiment, ce n'est pas seulement de voyager : c'est de
+      construire un voyage. Choisir le bon hébergement, dessiner un itinéraire
+      qui a du sens, dénicher la bonne adresse au bon moment... j'y passe un
+      temps que je ne compte plus, avec un plaisir qui ne faiblit jamais.
+    </p>
+
+    <p>
+      C'est cette passion presque obsessionnelle pour les détails qui font un
+      beau voyage que je mets aujourd'hui au service de chaque projet que je
+      conçois avec vous.
+    </p>
+
+    <div class="stops">
+      <span class="stop">📋 Itinéraires sur-mesure</span>
+      <span class="stop">🗺 Logistique millimétrée</span>
+      <span class="stop">⏱ Planification minutieuse</span>
+      <span class="stop">❤️ Passion du détail</span>
+    </div>
+  </div>
+
+</section>
+
+<section class="services-intro">
+  <span>MON ACCOMPAGNEMENT</span>
+  <h2>Des voyages pensés pour vous</h2>
+  <p>
+    Je ne vends pas de billets ni de nuits d'hôtel. Je conçois, sur mesure,
+    l'itinéraire, les adresses et le rythme d'un voyage qui vous correspond,
+    puis je vous le remets sous la forme d'un carnet clair et prêt à vivre.
+  </p>
+</section>
+
+<section class="approach">
+
+  <div class="approach-card">
+    <div class="num">01</div>
+    <h3>On se parle de vous</h3>
+    <p>
+      Vos envies, votre budget, votre rythme : tout commence par un
+      questionnaire simple qui me permet de comprendre le voyage que vous
+      avez en tête.
+    </p>
+  </div>
+
+  <div class="approach-card">
+    <div class="num">02</div>
+    <h3>Je conçois votre itinéraire</h3>
+    <p>
+      Hébergements, activités, bonnes adresses et transports : je construis
+      un parcours cohérent, adapté à votre budget et à vos envies réelles.
+    </p>
+  </div>
+
+  <div class="approach-card">
+    <div class="num">03</div>
+    <h3>Vous recevez votre carnet</h3>
+    <p>
+      Un carnet de voyage numérique — et papier si vous le souhaitez — avec
+      tout ce qu'il faut pour réserver et partir l'esprit tranquille.
+    </p>
+  </div>
+
+</section>
+
+<section class="formules">
+
+  <div class="formule-card">
+    <div class="formule-name">Essentiel</div>
+    <div class="formule-tag">JUSQU'À 4 JOURS</div>
+    <div class="formule-price">80 € <span>/ prestation</span></div>
+    <ul>
+      <li>Itinéraire personnalisé</li>
+      <li>Sélection d'hébergements</li>
+      <li>Carnet de voyage numérique</li>
+    </ul>
+    <a href="creer-mon-voyage.html" class="formule-cta">Choisir Essentiel</a>
+  </div>
+
+  <div class="formule-card featured">
+    <div class="formule-name">Évasion</div>
+    <div class="formule-tag">5 À 9 JOURS</div>
+    <div class="formule-price">145 € <span>/ prestation</span></div>
+    <ul>
+      <li>Itinéraire détaillé jour par jour</li>
+      <li>Adresses et activités sélectionnées</li>
+      <li>Carnet de voyage numérique</li>
+      <li>Assistance avant le départ</li>
+    </ul>
+    <a href="creer-mon-voyage.html" class="formule-cta">Choisir Évasion</a>
+  </div>
+
+  <div class="formule-card">
+    <div class="formule-name">Signature</div>
+    <div class="formule-tag">10 JOURS ET PLUS</div>
+    <div class="formule-price">190 € <span>/ prestation</span></div>
+    <ul>
+      <li>Itinéraire complet et détaillé</li>
+      <li>Adresses exclusives et expériences locales</li>
+      <li>Carnet de voyage numérique</li>
+      <li>Accompagnement personnalisé</li>
+    </ul>
+    <a href="creer-mon-voyage.html" class="formule-cta">Choisir Signature</a>
+  </div>
+
+</section>
+
+<section class="final-cta">
+  <h2>Prêt·e à imaginer votre prochain voyage ?</h2>
+  <p>
+    Quelques minutes suffisent pour me parler de vos envies. Le reste, c'est
+    à moi de m'en occuper.
+  </p>
+  <a href="creer-mon-voyage.html">Créer mon voyage ✈</a>
+</section>
+
+</body>
+</html>
