@@ -389,7 +389,7 @@ textarea{
 
 <div class="field">
 <label class="title">Quelle destination envisagez-vous ?</label>
-<input type="text" name="destination" placeholder="Ex : Japon, États-Unis, Grèce...">
+<input type="text" name="destination" id="destination" placeholder="Ex : Japon, États-Unis, Grèce...">
 </div>
 
 <div class="field">
@@ -930,7 +930,20 @@ function updateBudgetOptions(){
     `;
   }
 }
-  calculatePrice();
+
+// Pré-remplissage de la destination si elle arrive via l'URL
+// (ex : creer-mon-voyage.html?destination=Japon depuis une page destination)
+function prefillDestination(){
+  const params = new URLSearchParams(window.location.search);
+  const destination = params.get("destination");
+
+  if(destination){
+    document.getElementById("destination").value = destination;
+  }
+}
+
+prefillDestination();
+calculatePrice();
 
 </script>
 

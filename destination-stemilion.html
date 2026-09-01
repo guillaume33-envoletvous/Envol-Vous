@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gironde & Saint-Émilion | Envol & Vous</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Pacifico&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: #f8f5ee;
+  color: #243b3b;
+}
+
+/* HEADER */
+
+header {
+  background: #174f52;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: white;
+}
+
+.stamp {
+  width: 65px;
+  height: 65px;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform: rotate(-7deg);
+}
+
+.stamp::before {
+  content: "ENVOL & VOUS";
+  position: absolute;
+  top: 7px;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.stamp::after {
+  content: "VOYAGE";
+  position: absolute;
+  bottom: 7px;
+  font-size: 7px;
+  letter-spacing: 1.5px;
+}
+
+.stamp-icon {
+  font-size: 24px;
+  transform: rotate(7deg);
+}
+
+.brand-name {
+  font-family: "Pacifico", cursive;
+  font-size: 32px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav .active {
+  color: #f5bd4b;
+}
+
+nav .nav-button {
+  border: 1px solid #f5bd4b;
+  padding: 12px 18px;
+  border-radius: 9px;
+}
+
+/* HERO */
+
+.hero {
+  height: 60vh;
+  min-height: 420px;
+  position: relative;
+  background-image: url("stemilion.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(9,31,32,.90) 0%,
+    rgba(9,31,32,.35) 55%,
+    rgba(9,31,32,.05) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 0 6% 55px;
+  max-width: 800px;
+}
+
+.hero-type {
+  color: #f5bd4b;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.hero-content h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 500;
+  margin: 12px 0 14px;
+}
+
+.hero-content p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.92);
+  max-width: 620px;
+}
+
+/* BREADCRUMB */
+
+.breadcrumb {
+  max-width: 1000px;
+  margin: 26px auto 0;
+  padding: 0 6%;
+  font-size: 14px;
+}
+
+.breadcrumb a {
+  color: #174f52;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* CONTENT */
+
+.content {
+  max-width: 1000px;
+  margin: 40px auto 0;
+  padding: 0 6% 30px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 55px;
+}
+
+.content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.content p {
+  line-height: 1.85;
+  color: #435353;
+  margin-bottom: 16px;
+}
+
+.sidebar {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(25,50,50,0.08);
+  height: fit-content;
+}
+
+.sidebar h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-bottom: 22px;
+}
+
+.sidebar li {
+  padding: 9px 0;
+  border-bottom: 1px solid #f0ece1;
+  font-size: 14.5px;
+  color: #3d4d4d;
+}
+
+.sidebar li:last-child {
+  border-bottom: none;
+}
+
+.sidebar li::before {
+  content: "✓ ";
+  color: #c99535;
+  font-weight: 600;
+}
+
+.best-time {
+  background: #f5f1e8;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.best-time strong {
+  display: block;
+  color: #174f52;
+  margin-bottom: 4px;
+}
+
+.sidebar-cta {
+  display: block;
+  text-align: center;
+  background: #f5bd4b;
+  color: #243b3b;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 9px;
+  font-weight: 600;
+}
+
+.sidebar-cta:hover {
+  background: #174f52;
+  color: white;
+}
+
+/* BOTTOM CTA */
+
+.bottom-cta {
+  max-width: 1000px;
+  margin: 60px auto 100px;
+  padding: 0 6%;
+}
+
+.bottom-cta-box {
+  background: linear-gradient(
+    90deg,
+    rgba(18,69,71,.97) 0%,
+    rgba(18,69,71,.88) 50%,
+    rgba(18,69,71,.72) 100%
+  );
+  border-radius: 22px;
+  padding: 55px;
+  color: white;
+  text-align: center;
+}
+
+.bottom-cta-box span {
+  color: #f5bd4b;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bottom-cta-box h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 500;
+  margin: 12px 0 16px;
+}
+
+.bottom-cta-box p {
+  color: rgba(255,255,255,.85);
+  max-width: 560px;
+  margin: 0 auto 26px;
+  line-height: 1.7;
+}
+
+.bottom-cta-box a {
+  display: inline-block;
+  background: #f5bd4b;
+  color: #243b3b;
+  text-decoration: none;
+  padding: 15px 26px;
+  border-radius: 9px;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom-cta-box {
+    padding: 36px 24px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="brand">
+  <div class="stamp">
+    <span class="stamp-icon">✈</span>
+  </div>
+  <span class="brand-name">Envol & Vous</span>
+</a>
+
+<nav>
+  <a href="a-propos.html">À propos</a>
+  <a href="destinations.html" class="active">Destination</a>
+  <a href="formules.html">Nos formules</a>
+  <a href="creer-mon-voyage.html" class="nav-button">Créer mon voyage</a>
+</nav>
+
+</header>
+
+<section class="hero" >
+  <div class="hero-content">
+    <span class="hero-type">Notre région</span>
+    <h1>Gironde & Saint-Émilion</h1>
+    <p>Vignobles classés à l'UNESCO, villages médiévaux et patrimoine bordelais : la Gironde se découvre au rythme des dégustations et des balades.</p>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <a href="destinations.html">← Toutes les destinations</a>
+</div>
+
+<section class="content">
+
+  <div>
+    <h2>Pourquoi partir en Gironde & Saint-Émilion</h2>
+    <p>Saint-Émilion et ses vignobles, classés au patrimoine mondial de l'UNESCO, offrent un cadre unique pour une escapade entre nature et gastronomie.</p>
+    <p>La région se prête particulièrement bien à un séjour court : quelques jours suffisent pour allier visites, dégustations et flânerie dans les villages.</p>
+    <p>Nous vous proposons un itinéraire sur mesure entre Bordeaux, Saint-Émilion et les villages alentour, adapté à la durée de votre escapade.</p>
+  </div>
+
+  <aside class="sidebar">
+
+    <h3>À ne pas manquer</h3>
+    <ul>
+      <li>Le village médiéval de Saint-Émilion</li>
+      <li>Les dégustations dans les châteaux viticoles</li>
+      <li>Le centre historique de Bordeaux</li>
+      <li>Les paysages de vignobles classés UNESCO</li>
+      <li>Les tables gourmandes du Bordelais</li>
+    </ul>
+
+    <div class="best-time">
+      <strong>Meilleure période</strong>
+      Du printemps à l'automne, notamment pendant les vendanges en septembre.
+    </div>
+
+    <a href="creer-mon-voyage.html?destination=Gironde%20&%20Saint-Émilion" class="sidebar-cta">
+      Réserver mon voyage →
+    </a>
+
+  </aside>
+
+</section>
+
+<section class="bottom-cta">
+  <div class="bottom-cta-box">
+    <span>ENVIE DE PARTIR</span>
+    <h2>Envie de vivre en Gironde & Saint-Émilion ?</h2>
+    <p>
+      Nous concevons votre voyage sur mesure vers cette destination :
+      itinéraire, hébergements et bonnes adresses, pensés pour vous.
+    </p>
+    <a href="creer-mon-voyage.html?destination=Gironde%20&%20Saint-Émilion">
+      Créer mon voyage vers la Gironde ✈
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
