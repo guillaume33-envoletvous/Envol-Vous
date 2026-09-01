@@ -942,7 +942,26 @@ function prefillDestination(){
   }
 }
 
+// Pré-remplissage du nombre de jours si une formule arrive via l'URL
+// (ex : creer-mon-voyage.html?formule=evasion depuis la page Nos formules)
+function prefillFormule(){
+  const params = new URLSearchParams(window.location.search);
+  const formule = params.get("formule");
+
+  const joursParFormule = {
+    essentiel: 3,
+    evasion: 6,
+    signature: 12,
+    "sur-mesure": 20
+  };
+
+  if(formule && joursParFormule[formule]){
+    document.getElementById("days").value = joursParFormule[formule];
+  }
+}
+
 prefillDestination();
+prefillFormule();
 calculatePrice();
 
 </script>
