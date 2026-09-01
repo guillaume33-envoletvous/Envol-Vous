@@ -377,7 +377,7 @@ textarea{
 
 <div class="form-container">
 
-<form class="form-card" id="travelForm">
+<form class="form-card" id="travelForm" action="https://formspree.io/f/mnpqpebl" method="POST">
 
 <!-- ÉTAPE 1 -->
 
@@ -540,17 +540,17 @@ Sélectionnez toutes les expériences qui vous ressemblent.
 
 <div class="choice-grid">
 
-<div class="choice"><input type="checkbox" id="c1"><label for="c1">🏝 Plages & détente</label></div>
-<div class="choice"><input type="checkbox" id="c2"><label for="c2">🏛 Culture & patrimoine</label></div>
-<div class="choice"><input type="checkbox" id="c3"><label for="c3">🌿 Nature & paysages</label></div>
-<div class="choice"><input type="checkbox" id="c4"><label for="c4">🚐 Road trip</label></div>
-<div class="choice"><input type="checkbox" id="c5"><label for="c5">🍴 Gastronomie</label></div>
-<div class="choice"><input type="checkbox" id="c6"><label for="c6">🥾 Aventure</label></div>
-<div class="choice"><input type="checkbox" id="c7"><label for="c7">🛍 Shopping</label></div>
-<div class="choice"><input type="checkbox" id="c8"><label for="c8">🌙 Sorties & vie nocturne</label></div>
-<div class="choice"><input type="checkbox" id="c9"><label for="c9">🧖 Bien-être & spa</label></div>
-<div class="choice"><input type="checkbox" id="c10"><label for="c10">🎢 Parcs & activités familiales</label></div>
-<div class="choice"><input type="checkbox" id="c11"><label for="c11">✨ Expériences locales & insolites</label></div></div>
+<div class="choice"><input type="checkbox" id="c1" name="envies" value="Plages & détente"><label for="c1">🏝 Plages & détente</label></div>
+<div class="choice"><input type="checkbox" id="c2" name="envies" value="Culture & patrimoine"><label for="c2">🏛 Culture & patrimoine</label></div>
+<div class="choice"><input type="checkbox" id="c3" name="envies" value="Nature & paysages"><label for="c3">🌿 Nature & paysages</label></div>
+<div class="choice"><input type="checkbox" id="c4" name="envies" value="Road trip"><label for="c4">🚐 Road trip</label></div>
+<div class="choice"><input type="checkbox" id="c5" name="envies" value="Gastronomie"><label for="c5">🍴 Gastronomie</label></div>
+<div class="choice"><input type="checkbox" id="c6" name="envies" value="Aventure"><label for="c6">🥾 Aventure</label></div>
+<div class="choice"><input type="checkbox" id="c7" name="envies" value="Shopping"><label for="c7">🛍 Shopping</label></div>
+<div class="choice"><input type="checkbox" id="c8" name="envies" value="Sorties & vie nocturne"><label for="c8">🌙 Sorties & vie nocturne</label></div>
+<div class="choice"><input type="checkbox" id="c9" name="envies" value="Bien-être & spa"><label for="c9">🧖 Bien-être & spa</label></div>
+<div class="choice"><input type="checkbox" id="c10" name="envies" value="Parcs & activités familiales"><label for="c10">🎢 Parcs & activités familiales</label></div>
+<div class="choice"><input type="checkbox" id="c11" name="envies" value="Expériences locales & insolites"><label for="c11">✨ Expériences locales & insolites</label></div></div>
 
 <div class="buttons">
 <button type="button" class="btn previous" onclick="previousStep()">← Retour</button>
@@ -704,7 +704,7 @@ Dernière étape ! Indiquez-nous vos coordonnées pour recevoir votre propositio
 </div>
 
 <div class="checkbox-line">
-<input type="checkbox" id="conditions" required>
+<input type="checkbox" id="conditions" name="conditions_acceptees" value="Oui" required>
 <label for="conditions">
 Je comprends qu'Envol & Vous conçoit et organise mon projet de voyage,
 mais que les réservations et paiements des transports, hébergements,
@@ -880,11 +880,53 @@ document.getElementById("travelForm").addEventListener("submit", function(e){
 
   e.preventDefault();
 
-  alert(
-    "Votre questionnaire est prêt ! Nous connecterons maintenant l'envoi des réponses à Envol & Vous."
-  );
+  const form = e.target;
+  const submitButton = form.querySelector(".submit");
+  const originalButtonText = submitButton.textContent;
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Envoi en cours...";
+
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { "Accept": "application/json" }
+  })
+  .then(function(response){
+    if(response.ok){
+      showConfirmation();
+    } else {
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
+      alert("Une erreur est survenue lors de l'envoi. Merci de réessayer, ou de nous contacter directement.");
+    }
+  })
+  .catch(function(){
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+    alert("Une erreur est survenue lors de l'envoi. Merci de réessayer, ou de nous contacter directement.");
+  });
 
 });
+
+function showConfirmation(){
+  const formCard = document.querySelector(".form-card");
+  const progressContainer = document.querySelector(".progress-container");
+
+  progressContainer.style.display = "none";
+
+  formCard.innerHTML =
+    '<div style="text-align:center; padding:20px 0;">' +
+      '<div style="font-size:48px; margin-bottom:20px;">✈</div>' +
+      '<h2 style="font-family:\'Playfair Display\',serif; font-size:32px; margin-bottom:16px;">Votre demande est bien envoyée !</h2>' +
+      '<p style="color:#6b7979; line-height:1.7; max-width:480px; margin:0 auto;">' +
+        'Merci pour toutes ces informations. Nous allons étudier votre projet avec attention ' +
+        'et revenir vers vous très prochainement avec une proposition faite pour vous.' +
+      '</p>' +
+    '</div>';
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
 function updateBudgetOptions(){
 
   const budgetType = document.getElementById("budgetType").value;
