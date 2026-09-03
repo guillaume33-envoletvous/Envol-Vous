@@ -120,13 +120,16 @@ nav .active{
 
 .bio-portrait{
   aspect-ratio:4/5;
-  background:linear-gradient(160deg,#174f52,#2c6f6f);
   border-radius:20px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#f5bd4b;
-  font-size:64px;
+  overflow:hidden;
+  box-shadow:0 20px 45px rgba(23,79,82,.22);
+}
+
+.bio-portrait img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
 .bio-text h2{
@@ -403,7 +406,9 @@ nav .active{
 
 <section class="bio">
 
-  <div class="bio-portrait">✈</div>
+  <div class="bio-portrait">
+    <img src="photo-bio.jpg" alt="Envol & Vous">
+  </div>
 
   <div class="bio-text">
     <h2>Une passion qui grandit à chaque voyage</h2>
