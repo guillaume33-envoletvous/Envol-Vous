@@ -350,6 +350,163 @@ nav .nav-button {
 
 }
 
+
+/* MOBILE MENU (added for consistency across the site) */
+
+.menu-mobile{
+  display:none;
+  background:none;
+  border:none;
+  color:white;
+  font-size:29px;
+  cursor:pointer;
+}
+
+@media(max-width:850px){
+  header{
+    position:relative;
+  }
+  nav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:#174f52;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+    padding:22px 6% 26px;
+    z-index:50;
+    box-shadow:0 15px 25px rgba(0,0,0,.2);
+  }
+  nav.open{
+    display:flex;
+  }
+  .menu-mobile{
+    display:block;
+  }
+}
+
+
+/* FOOTER */
+
+.site-footer{
+  background:#0f3638;
+  color:rgba(255,255,255,.85);
+  padding:60px 6% 30px;
+}
+
+.footer-inner{
+  max-width:1250px;
+  margin:auto;
+}
+
+.footer-top{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1.2fr;
+  gap:40px;
+  padding-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.footer-brand-name{
+  font-family:"Pacifico",cursive;
+  font-size:26px;
+  color:#fff;
+}
+
+.footer-tagline{
+  margin-top:10px;
+  font-size:14px;
+  color:rgba(255,255,255,.6);
+  line-height:1.6;
+  max-width:260px;
+}
+
+.footer-nav{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.footer-label{
+  color:#f5bd4b;
+  font-size:11.5px;
+  letter-spacing:1.5px;
+  font-weight:600;
+  margin-bottom:5px;
+  text-transform:uppercase;
+}
+
+.footer-nav a{
+  color:rgba(255,255,255,.8);
+  text-decoration:none;
+  font-size:14.5px;
+}
+
+.footer-nav a:hover{
+  color:#f5bd4b;
+}
+
+.footer-contact-text{
+  font-size:13.5px;
+  line-height:1.6;
+  color:rgba(255,255,255,.65);
+  max-width:280px;
+  margin-bottom:14px;
+}
+
+.footer-contact-link{
+  display:inline-block;
+  color:#f5bd4b;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14.5px;
+}
+
+.footer-contact-link:hover{
+  text-decoration:underline;
+}
+
+.footer-bottom{
+  padding-top:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:13px;
+  color:rgba(255,255,255,.5);
+}
+
+.footer-legal-links{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.footer-legal-links a{
+  color:rgba(255,255,255,.55);
+  text-decoration:none;
+}
+
+.footer-legal-links a:hover{
+  color:#f5bd4b;
+}
+
+@media(max-width:750px){
+  .footer-top{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
 </style>
 </head>
 
@@ -364,12 +521,14 @@ nav .nav-button {
   <span class="brand-name">Envol & Vous</span>
 </a>
 
-<nav>
+<nav id="mainNav">
   <a href="a-propos.html">À propos</a>
   <a href="destinations.html" class="active">Destination</a>
   <a href="formules.html">Nos formules</a>
   <a href="creer-mon-voyage.html" class="nav-button">Créer mon voyage</a>
 </nav>
+
+<button class="menu-mobile" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
 
 </header>
 
@@ -431,6 +590,64 @@ nav .nav-button {
     </a>
   </div>
 </section>
+
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <span class="footer-brand-name">Envol & Vous</span>
+        <p class="footer-tagline">Voyages sur mesure, pensés pour vous.</p>
+      </div>
+
+      <nav class="footer-nav">
+        <span class="footer-label">Navigation</span>
+        <a href="index.html">Accueil</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="formules.html">Nos formules</a>
+      </nav>
+
+      <div class="footer-contact">
+        <span class="footer-label">Nous contacter</span>
+        <p class="footer-contact-text">
+          Pour toute question, passez par notre formulaire :
+          nous vous répondrons directement par e-mail.
+        </p>
+        <a href="creer-mon-voyage.html" class="footer-contact-link">Créer mon voyage →</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal-links">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <span>·</span>
+        <a href="cgv.html">CGV</a>
+        <span>·</span>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Envol &amp; Vous. Tous droits réservés.</div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+(function(){
+  var menuToggle = document.getElementById("menuToggle");
+  var mainNav = document.getElementById("mainNav");
+  if(menuToggle && mainNav){
+    menuToggle.addEventListener("click", function(){
+      var isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+})();
+</script>
 
 <script>
 if ("serviceWorker" in navigator) {

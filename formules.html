@@ -411,6 +411,125 @@ nav .nav-button {
   }
 
 }
+
+/* FOOTER */
+
+.site-footer{
+  background:#0f3638;
+  color:rgba(255,255,255,.85);
+  padding:60px 6% 30px;
+}
+
+.footer-inner{
+  max-width:1250px;
+  margin:auto;
+}
+
+.footer-top{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1.2fr;
+  gap:40px;
+  padding-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+.footer-brand-name{
+  font-family:"Pacifico",cursive;
+  font-size:26px;
+  color:#fff;
+}
+
+.footer-tagline{
+  margin-top:10px;
+  font-size:14px;
+  color:rgba(255,255,255,.6);
+  line-height:1.6;
+  max-width:260px;
+}
+
+.footer-nav{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.footer-label{
+  color:#f5bd4b;
+  font-size:11.5px;
+  letter-spacing:1.5px;
+  font-weight:600;
+  margin-bottom:5px;
+  text-transform:uppercase;
+}
+
+.footer-nav a{
+  color:rgba(255,255,255,.8);
+  text-decoration:none;
+  font-size:14.5px;
+}
+
+.footer-nav a:hover{
+  color:#f5bd4b;
+}
+
+.footer-contact-text{
+  font-size:13.5px;
+  line-height:1.6;
+  color:rgba(255,255,255,.65);
+  max-width:280px;
+  margin-bottom:14px;
+}
+
+.footer-contact-link{
+  display:inline-block;
+  color:#f5bd4b;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14.5px;
+}
+
+.footer-contact-link:hover{
+  text-decoration:underline;
+}
+
+.footer-bottom{
+  padding-top:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:13px;
+  color:rgba(255,255,255,.5);
+}
+
+.footer-legal-links{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.footer-legal-links a{
+  color:rgba(255,255,255,.55);
+  text-decoration:none;
+}
+
+.footer-legal-links a:hover{
+  color:#f5bd4b;
+}
+
+@media(max-width:750px){
+  .footer-top{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+
 </style>
 </head>
 
@@ -567,6 +686,50 @@ d'un voyage pour un maximum de 4 voyageurs. Les transports,
 hébergements, activités et autres prestations réservées auprès de
 prestataires ne sont pas inclus dans le prix de la formule.
 </div>
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <span class="footer-brand-name">Envol & Vous</span>
+        <p class="footer-tagline">Voyages sur mesure, pensés pour vous.</p>
+      </div>
+
+      <nav class="footer-nav">
+        <span class="footer-label">Navigation</span>
+        <a href="index.html">Accueil</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="formules.html">Nos formules</a>
+      </nav>
+
+      <div class="footer-contact">
+        <span class="footer-label">Nous contacter</span>
+        <p class="footer-contact-text">
+          Pour toute question, passez par notre formulaire :
+          nous vous répondrons directement par e-mail.
+        </p>
+        <a href="creer-mon-voyage.html" class="footer-contact-link">Créer mon voyage →</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal-links">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <span>·</span>
+        <a href="cgv.html">CGV</a>
+        <span>·</span>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Envol &amp; Vous. Tous droits réservés.</div>
+    </div>
+
+  </div>
+</footer>
 
 <script>
 const menuToggle = document.getElementById("menuToggle");
