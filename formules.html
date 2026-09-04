@@ -548,6 +548,48 @@ nav .active {
   }
 }
 
+
+/* SOCIAL ICONS */
+
+.social-links{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.social-icon{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.14);
+  border:1.5px solid rgba(255,255,255,.55);
+  color:white;
+  transition:.2s;
+}
+
+.social-icon:hover{
+  background:#f5bd4b;
+  border-color:#f5bd4b;
+  color:#174f52;
+  transform:translateY(-2px);
+}
+
+.social-icon svg{
+  width:20px;
+  height:20px;
+}
+
+.hero-social{
+  margin-top:22px;
+}
+
+.footer-social{
+  margin-top:14px;
+}
+
 </style>
 </head>
 
@@ -714,6 +756,11 @@ prestataires ne sont pas inclus dans le prix de la formule.
       <div class="footer-brand">
         <span class="footer-brand-name">Envol & Vous</span>
         <p class="footer-tagline">Voyages sur mesure, pensés pour vous.</p>
+        <div class="social-links footer-social">
+  <a href="https://www.instagram.com/envol_et_vous.fr/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" stroke="none"/></svg></a>
+  <a href="https://www.tiktok.com/@envol_et_vous" class="social-icon" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 2.5c.4 2.1 1.8 3.7 3.8 4.1v2.8c-1.3-.1-2.5-.5-3.6-1.3v6.2c0 3.2-2.6 5.7-5.8 5.4-2.6-.3-4.6-2.5-4.5-5.2.1-2.8 2.5-5 5.4-4.9v2.9c-1.3-.1-2.4.9-2.5 2.2-.1 1.3.9 2.4 2.2 2.5 1.4.1 2.6-1 2.6-2.4V2.5h2.4z"/></svg></a>
+  <a href="https://www.facebook.com/share/19KbaeKtbD/?mibextid=wwXIfr" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.1 3h-2.2C10.5 3 9 4.6 9 7v2H7v3h2v9h3.2v-9h2.6l.4-3h-3V7.2c0-.7.4-1.2 1.1-1.2H15V3z"/></svg></a>
+</div>
       </div>
 
       <nav class="footer-nav">
