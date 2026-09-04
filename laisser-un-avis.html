@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Laisser un avis | Envol & Vous</title>
+
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#174f52">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Envol & Vous">
+
+<meta name="description" content="Vous avez voyagé avec Envol & Vous ? Partagez votre expérience en quelques mots pour aider les prochains voyageurs.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Envol & Vous">
+<meta property="og:title" content="Laisser un avis | Envol & Vous">
+<meta property="og:description" content="Vous avez voyagé avec Envol & Vous ? Partagez votre expérience en quelques mots pour aider les prochains voyageurs.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Pacifico&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"DM Sans",sans-serif;
+  background:#f8f5ee;
+  color:#294445;
+}
+
+header{
+  background:#174f52;
+  padding:20px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+}
+
+.brand{
+  color:white;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.85);
+}
+
+.brand-name{
+  font-family:"Pacifico",cursive;
+  font-size:30px;
+}
+
+nav{
+  display:flex;
+  gap:28px;
+  align-items:center;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+}
+
+nav .active{
+  color:#f5bd4b;
+}
+
+.menu-mobile{
+  display:none;
+  background:none;
+  border:none;
+  color:white;
+  font-size:29px;
+  cursor:pointer;
+}
+
+@media(max-width:850px){
+  #mainNav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:#174f52;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+    padding:22px 6% 26px;
+    z-index:50;
+    box-shadow:0 15px 25px rgba(0,0,0,.2);
+  }
+  #mainNav.open{
+    display:flex;
+  }
+  .menu-mobile{
+    display:block;
+  }
+}
+
+.intro{
+  text-align:center;
+  padding:65px 20px 20px;
+}
+
+.eyebrow{
+  color:#c69239;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:600;
+}
+
+.intro h1{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(36px,5vw,54px);
+  font-weight:500;
+  margin:12px 0;
+}
+
+.intro p{
+  color:#6b7979;
+  max-width:560px;
+  margin:auto;
+  line-height:1.7;
+}
+
+.form-container{
+  max-width:640px;
+  margin:30px auto 100px;
+  padding:0 20px;
+}
+
+.form-card{
+  background:white;
+  padding:45px;
+  border-radius:20px;
+  box-shadow:0 15px 45px rgba(30,65,65,.08);
+}
+
+.field{
+  margin-bottom:24px;
+}
+
+label.title{
+  display:block;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  border:1px solid #d8d8d2;
+  background:#fff;
+  border-radius:9px;
+  padding:14px;
+  font-family:inherit;
+  font-size:15px;
+}
+
+textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.stars{
+  display:flex;
+  flex-direction:row-reverse;
+  justify-content:flex-end;
+  gap:6px;
+}
+
+.stars input{
+  display:none;
+  width:auto;
+}
+
+.stars label{
+  font-size:34px;
+  color:#ddd8ce;
+  cursor:pointer;
+  transition:.15s;
+}
+
+.stars label:hover,
+.stars label:hover ~ label,
+.stars input:checked ~ label{
+  color:#f5bd4b;
+}
+
+.buttons{
+  margin-top:35px;
+}
+
+.btn{
+  width:100%;
+  padding:15px 22px;
+  border-radius:9px;
+  border:1px solid #d2a147;
+  cursor:pointer;
+  font-family:inherit;
+  font-weight:600;
+  font-size:16px;
+  background:#f5bd4b;
+  color:#243b3b;
+}
+
+.btn:disabled{
+  opacity:.6;
+  cursor:default;
+}
+
+.info-box{
+  background:#f5f1e8;
+  padding:16px 18px;
+  border-radius:12px;
+  margin-top:20px;
+  line-height:1.6;
+  font-size:13.5px;
+  color:#5c6b6b;
+}
+
+@media(max-width:700px){
+  header{
+    flex-direction:column;
+    gap:18px;
+  }
+  .form-card{
+    padding:28px 20px;
+  }
+  .stars label{
+    font-size:28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="brand">
+    <img src="logo.png" alt="Envol & Vous" class="logo">
+    <span class="brand-name">Envol & Vous</span>
+  </a>
+
+  <nav id="mainNav">
+    <a href="a-propos.html">À propos</a>
+    <a href="destinations.html">Destination</a>
+    <a href="formules.html">Nos formules</a>
+    <a href="creer-mon-voyage.html">Créer mon voyage</a>
+  </nav>
+
+  <button class="menu-mobile" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+</header>
+
+<section class="intro">
+  <span class="eyebrow">VOTRE AVIS COMPTE</span>
+  <h1>Comment s'est passé votre voyage ?</h1>
+  <p>
+    Vous avez fait appel à Envol & Vous pour concevoir votre voyage ?
+    Quelques mots de votre part aideront les prochains voyageurs à se projeter.
+  </p>
+</section>
+
+<div class="form-container">
+
+<form class="form-card" id="reviewForm" action="https://formspree.io/f/mnpqpebl" method="POST">
+
+<input type="hidden" name="form_type" value="Avis client">
+
+<div class="field">
+<label class="title">Votre note</label>
+<div class="stars">
+  <input type="radio" id="star5" name="note" value="5"><label for="star5">★</label>
+  <input type="radio" id="star4" name="note" value="4"><label for="star4">★</label>
+  <input type="radio" id="star3" name="note" value="3"><label for="star3">★</label>
+  <input type="radio" id="star2" name="note" value="2"><label for="star2">★</label>
+  <input type="radio" id="star1" name="note" value="1"><label for="star1">★</label>
+</div>
+</div>
+
+<div class="field">
+<label class="title">Prénom</label>
+<input type="text" name="prenom" required>
+</div>
+
+<div class="field">
+<label class="title">Destination ou formule concernée (facultatif)</label>
+<input type="text" name="destination_concernee" placeholder="Ex : Japon, formule Évasion...">
+</div>
+
+<div class="field">
+<label class="title">Votre avis</label>
+<textarea name="avis" required placeholder="Racontez votre expérience avec Envol & Vous..."></textarea>
+</div>
+
+<div class="field">
+<label class="title">Adresse e-mail</label>
+<input type="email" name="email" required placeholder="Pour qu'on puisse vous répondre si besoin">
+</div>
+
+<div class="info-box">
+Votre avis nous sera transmis directement. Avec votre accord, nous pourrons le publier sur le site
+(nous vous recontacterons avant toute publication).
+</div>
+
+<div class="buttons">
+<button type="submit" class="btn" id="submitBtn">Envoyer mon avis ✈</button>
+</div>
+
+</form>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-brand-name">Envol & Vous</span>
+        <p class="footer-tagline">Voyages sur mesure, pensés pour vous.</p>
+        <div class="social-links footer-social">
+          <a href="https://www.instagram.com/envol_et_vous.fr/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.7" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.tiktok.com/@envol_et_vous" class="social-icon" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 2.5c.4 2.1 1.8 3.7 3.8 4.1v2.8c-1.3-.1-2.5-.5-3.6-1.3v6.2c0 3.2-2.6 5.7-5.8 5.4-2.6-.3-4.6-2.5-4.5-5.2.1-2.8 2.5-5 5.4-4.9v2.9c-1.3-.1-2.4.9-2.5 2.2-.1 1.3.9 2.4 2.2 2.5 1.4.1 2.6-1 2.6-2.4V2.5h2.4z"/></svg></a>
+          <a href="https://www.facebook.com/share/19KbaeKtbD/?mibextid=wwXIfr" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.1 3h-2.2C10.5 3 9 4.6 9 7v2H7v3h2v9h3.2v-9h2.6l.4-3h-3V7.2c0-.7.4-1.2 1.1-1.2H15V3z"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="footer-nav">
+        <span class="footer-label">Navigation</span>
+        <a href="index.html">Accueil</a>
+        <a href="a-propos.html">À propos</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="formules.html">Nos formules</a>
+      </nav>
+
+      <div class="footer-contact">
+        <span class="footer-label">Nous contacter</span>
+        <p class="footer-contact-text">
+          Pour toute question, passez par notre formulaire :
+          nous vous répondrons directement par e-mail.
+        </p>
+        <a href="creer-mon-voyage.html" class="footer-contact-link">Créer mon voyage →</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-legal-links">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <span>·</span>
+        <a href="cgv.html">CGV</a>
+        <span>·</span>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+      </div>
+      <div class="footer-copy">&copy; 2026 Envol &amp; Vous. Tous droits réservés.</div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer{
+  background:#0f3638;
+  color:rgba(255,255,255,.85);
+  padding:60px 6% 30px;
+}
+.footer-inner{
+  max-width:1250px;
+  margin:auto;
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1.2fr;
+  gap:40px;
+  padding-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.footer-brand-name{
+  font-family:"Pacifico",cursive;
+  font-size:26px;
+  color:#fff;
+}
+.footer-tagline{
+  margin-top:10px;
+  font-size:14px;
+  color:rgba(255,255,255,.6);
+  line-height:1.6;
+  max-width:260px;
+}
+.footer-nav{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.footer-label{
+  color:#f5bd4b;
+  font-size:11.5px;
+  letter-spacing:1.5px;
+  font-weight:600;
+  margin-bottom:5px;
+  text-transform:uppercase;
+}
+.footer-nav a{
+  color:rgba(255,255,255,.8);
+  text-decoration:none;
+  font-size:14.5px;
+}
+.footer-nav a:hover{
+  color:#f5bd4b;
+}
+.footer-contact-text{
+  font-size:13.5px;
+  line-height:1.6;
+  color:rgba(255,255,255,.65);
+  max-width:280px;
+  margin-bottom:14px;
+}
+.footer-contact-link{
+  display:inline-block;
+  color:#f5bd4b;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14.5px;
+}
+.footer-contact-link:hover{
+  text-decoration:underline;
+}
+.footer-bottom{
+  padding-top:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:13px;
+  color:rgba(255,255,255,.5);
+}
+.footer-legal-links{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.footer-legal-links a{
+  color:rgba(255,255,255,.55);
+  text-decoration:none;
+}
+.footer-legal-links a:hover{
+  color:#f5bd4b;
+}
+.social-links{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.social-icon{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.14);
+  border:1.5px solid rgba(255,255,255,.55);
+  color:white;
+  transition:.2s;
+}
+.social-icon:hover{
+  background:#f5bd4b;
+  border-color:#f5bd4b;
+  color:#174f52;
+  transform:translateY(-2px);
+}
+.social-icon svg{
+  width:20px;
+  height:20px;
+}
+.footer-social{
+  margin-top:14px;
+}
+@media(max-width:750px){
+  .footer-top{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a644bed4aaf042a783f204edb5f5b8ee"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+<script>
+(function(){
+  var menuToggle = document.getElementById("menuToggle");
+  var mainNav = document.getElementById("mainNav");
+  if(menuToggle && mainNav){
+    menuToggle.addEventListener("click", function(){
+      var isOpen = mainNav.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+})();
+</script>
+
+<script>
+document.getElementById("reviewForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  var form = e.target;
+  var btn = document.getElementById("submitBtn");
+  var originalText = btn.textContent;
+
+  btn.disabled = true;
+  btn.textContent = "Envoi en cours...";
+
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { "Accept": "application/json" }
+  })
+  .then(function(response){
+    if(response.ok){
+      document.querySelector(".form-card").innerHTML =
+        '<div style="text-align:center; padding:20px 0;">' +
+          '<div style="font-size:48px; margin-bottom:20px;">✈</div>' +
+          '<h2 style="font-family:\'Playfair Display\',serif; font-size:28px; margin-bottom:16px;">Merci pour votre avis !</h2>' +
+          '<p style="color:#6b7979; line-height:1.7;">Nous vous recontacterons avant toute publication sur le site.</p>' +
+        '</div>';
+    } else {
+      btn.disabled = false;
+      btn.textContent = originalText;
+      alert("Une erreur est survenue. Merci de réessayer.");
+    }
+  })
+  .catch(function(){
+    btn.disabled = false;
+    btn.textContent = originalText;
+    alert("Une erreur est survenue. Merci de réessayer.");
+  });
+});
+</script>
+
+</body>
+</html>
