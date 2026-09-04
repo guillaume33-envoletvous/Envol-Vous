@@ -95,39 +95,12 @@ header {
 
 /* TAMPON DE VOYAGE */
 
-.stamp {
-  width: 82px;
-  height: 82px;
-  border: 3px solid white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transform: rotate(-7deg);
-  box-shadow: inset 0 0 0 4px rgba(255,255,255,0.18);
-}
-
-.stamp::before {
-  content: "ENVOL & VOUS";
-  position: absolute;
-  top: 8px;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 1.3px;
-}
-
-.stamp::after {
-  content: "VOYAGE";
-  position: absolute;
-  bottom: 8px;
-  font-size: 8px;
-  letter-spacing: 2px;
-}
-
-.stamp-icon {
-  font-size: 31px;
-  transform: rotate(7deg);
+.stamp{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.85);
 }
 
 .brand-name {
@@ -242,20 +215,6 @@ h1 {
   .stamp {
     width: 58px;
     height: 58px;
-  }
-
-  .stamp::before {
-    font-size: 6px;
-    top: 5px;
-  }
-
-  .stamp::after {
-    font-size: 6px;
-    bottom: 5px;
-  }
-
-  .stamp-icon {
-    font-size: 22px;
   }
 
   .brand-name {
@@ -738,9 +697,7 @@ h1 {
 <header>
 
 <a href="index.html" class="brand">
-  <div class="stamp">
-    <span class="stamp-icon">✈</span>
-  </div>
+  <img src="logo.png" alt="Envol & Vous" class="stamp">
   <span class="brand-name">Envol & Vous</span>
 </a>
 

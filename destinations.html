@@ -68,37 +68,12 @@ header {
   color: white;
 }
 
-.stamp {
-  width: 65px;
-  height: 65px;
-  border: 2px solid white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transform: rotate(-7deg);
-}
-
-.stamp::before {
-  content: "ENVOL & VOUS";
-  position: absolute;
-  top: 7px;
-  font-size: 7px;
-  letter-spacing: 1px;
-}
-
-.stamp::after {
-  content: "VOYAGE";
-  position: absolute;
-  bottom: 7px;
-  font-size: 7px;
-  letter-spacing: 1.5px;
-}
-
-.stamp-icon {
-  font-size: 24px;
-  transform: rotate(7deg);
+.stamp{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.85);
 }
 
 .brand-name {
@@ -591,9 +566,7 @@ nav .nav-button {
 
 <a href="index.html" class="brand">
 
-  <div class="stamp">
-    <span class="stamp-icon">✈</span>
-  </div>
+  <img src="logo.png" alt="Envol & Vous" class="stamp">
 
   <span class="brand-name">Envol & Vous</span>
 

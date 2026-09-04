@@ -67,12 +67,9 @@ header{
 .logo{
   width:58px;
   height:58px;
-  border:2px solid white;
   border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:23px;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,.85);
 }
 
 .brand-name{
@@ -600,7 +597,7 @@ nav .active{
 
 <header>
   <a href="index.html" class="brand">
-    <div class="logo">✈</div>
+    <img src="logo.png" alt="Envol & Vous" class="logo">
     <span class="brand-name">Envol & Vous</span>
   </a>
 
